@@ -56,7 +56,8 @@ if "place_name" in places.columns:
 elif "recommended_place" in places.columns:
     places["display_name"] = places["recommended_place"]
 print(f"[CutiGo] {len(places):,} places loaded ✅")
-
+import gc
+gc.collect()
 # ================================================================
 # CONSTANTS
 # ================================================================
