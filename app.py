@@ -45,7 +45,12 @@ le_cat      = label_enc["category"]
 print("[CutiGo] ML models loaded ✅")
 
 print("[CutiGo] Loading places database...")
-places = pd.read_csv(os.path.join(DATA_DIR, "cutigo_master_places.csv"))
+places = pd.read_csv(
+    os.path.join(DATA_DIR, "cutigo_master_places.csv"),
+    usecols=["place_name", "recommended_place", "state", 
+             "category", "rating_imputed", "booking_link"],
+    dtype={"state": "category", "category": "category"}
+)
 if "place_name" in places.columns:
     places["display_name"] = places["place_name"]
 elif "recommended_place" in places.columns:
